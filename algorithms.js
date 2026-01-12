@@ -24,7 +24,12 @@ class SortingAlgorithms {
                 if (visualize) {
                     this.steps.push({
                         type: 'compare',
-                        indices: [j, j + 1]
+                        indices: [j, j + 1],
+                        arrayState: [...arr],
+                        pointers: [
+                            { index: j, label: 'j', color: '#f59e0b' },
+                            { index: j + 1, label: 'j+1', color: '#8b5cf6' }
+                        ]
                     });
                 }
                 
@@ -34,7 +39,12 @@ class SortingAlgorithms {
                     if (visualize) {
                         this.steps.push({
                             type: 'swap',
-                            indices: [j, j + 1]
+                            indices: [j, j + 1],
+                            arrayState: [...arr],
+                            pointers: [
+                                { index: j, label: 'j', color: '#f59e0b' },
+                                { index: j + 1, label: 'j+1', color: '#8b5cf6' }
+                            ]
                         });
                     }
                 }
@@ -57,7 +67,12 @@ class SortingAlgorithms {
                 if (visualize) {
                     this.steps.push({
                         type: 'compare',
-                        indices: [j, j + 1]
+                        indices: [j, j + 1],
+                        arrayState: [...arr],
+                        pointers: [
+                            { index: j + 1, label: 'key', color: '#10b981' },
+                            { index: j, label: 'j', color: '#f59e0b' }
+                        ]
                     });
                 }
                 
@@ -67,7 +82,12 @@ class SortingAlgorithms {
                     if (visualize) {
                         this.steps.push({
                             type: 'swap',
-                            indices: [j, j + 1]
+                            indices: [j, j + 1],
+                            arrayState: [...arr],
+                            pointers: [
+                                { index: j + 1, label: 'key', color: '#10b981' },
+                                { index: j, label: 'j', color: '#f59e0b' }
+                            ]
                         });
                     }
                     j--;
@@ -107,7 +127,14 @@ class SortingAlgorithms {
             if (visualize) {
                 this.steps.push({
                     type: 'compare',
-                    indices: [start + i, mid + 1 + j]
+                    indices: [start + i, mid + 1 + j],
+                    arrayState: [...arr],
+                    pointers: [
+                        { index: start, label: 'start', color: '#3b82f6' },
+                        { index: mid, label: 'mid', color: '#f59e0b' },
+                        { index: end, label: 'end', color: '#ef4444' },
+                        { index: k, label: 'k', color: '#10b981' }
+                    ]
                 });
             }
             
@@ -122,7 +149,14 @@ class SortingAlgorithms {
             if (visualize) {
                 this.steps.push({
                     type: 'swap',
-                    indices: [k]
+                    indices: [k],
+                    arrayState: [...arr],
+                    pointers: [
+                        { index: start, label: 'start', color: '#3b82f6' },
+                        { index: mid, label: 'mid', color: '#f59e0b' },
+                        { index: end, label: 'end', color: '#ef4444' },
+                        { index: k, label: 'k', color: '#10b981' }
+                    ]
                 });
             }
             k++;
@@ -133,6 +167,19 @@ class SortingAlgorithms {
             i++;
             k++;
             this.swaps++;
+            if (visualize) {
+                this.steps.push({
+                    type: 'swap',
+                    indices: [k - 1],
+                    arrayState: [...arr],
+                    pointers: [
+                        { index: start, label: 'start', color: '#3b82f6' },
+                        { index: mid, label: 'mid', color: '#f59e0b' },
+                        { index: end, label: 'end', color: '#ef4444' },
+                        { index: k - 1, label: 'k', color: '#10b981' }
+                    ]
+                });
+            }
         }
         
         while (j < right.length) {
@@ -140,6 +187,19 @@ class SortingAlgorithms {
             j++;
             k++;
             this.swaps++;
+            if (visualize) {
+                this.steps.push({
+                    type: 'swap',
+                    indices: [k - 1],
+                    arrayState: [...arr],
+                    pointers: [
+                        { index: start, label: 'start', color: '#3b82f6' },
+                        { index: mid, label: 'mid', color: '#f59e0b' },
+                        { index: end, label: 'end', color: '#ef4444' },
+                        { index: k - 1, label: 'k', color: '#10b981' }
+                    ]
+                });
+            }
         }
     }
 
@@ -165,9 +225,21 @@ class SortingAlgorithms {
         for (let j = low; j < high; j++) {
             this.comparisons++;
             if (visualize) {
+                let pointers = [
+                    { index: low, label: 'low', color: '#3b82f6' },
+                    { index: high, label: 'high/pivot', color: '#ef4444' },
+                    { index: j, label: 'j', color: '#f59e0b' }
+                ];
+                // i starts at -1 and tracks the boundary of elements less than pivot.
+                // Only show pointer when i >= 0 since -1 is not a valid array position.
+                if (i >= 0) {
+                    pointers.push({ index: i, label: 'i', color: '#8b5cf6' });
+                }
                 this.steps.push({
                     type: 'compare',
-                    indices: [j, high]
+                    indices: [j, high],
+                    arrayState: [...arr],
+                    pointers: pointers
                 });
             }
             
@@ -178,7 +250,14 @@ class SortingAlgorithms {
                 if (visualize) {
                     this.steps.push({
                         type: 'swap',
-                        indices: [i, j]
+                        indices: [i, j],
+                        arrayState: [...arr],
+                        pointers: [
+                            { index: low, label: 'low', color: '#3b82f6' },
+                            { index: high, label: 'high/pivot', color: '#ef4444' },
+                            { index: i, label: 'i', color: '#8b5cf6' },
+                            { index: j, label: 'j', color: '#f59e0b' }
+                        ]
                     });
                 }
             }
@@ -189,7 +268,13 @@ class SortingAlgorithms {
         if (visualize) {
             this.steps.push({
                 type: 'swap',
-                indices: [i + 1, high]
+                indices: [i + 1, high],
+                arrayState: [...arr],
+                pointers: [
+                    { index: low, label: 'low', color: '#3b82f6' },
+                    { index: high, label: 'high', color: '#ef4444' },
+                    { index: i + 1, label: 'pivot_pos', color: '#10b981' }
+                ]
             });
         }
         
