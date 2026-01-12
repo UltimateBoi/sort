@@ -8,6 +8,8 @@ class Visualizer {
         this.colors = [];
         this.isRunning = false;
         this.speed = 50;
+        this.POINTER_SPACE = 60; // Space reserved at bottom for pointer labels
+        this.POINTER_OFFSET = 40; // Offset from canvas bottom for bars
         
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
@@ -33,7 +35,7 @@ class Visualizer {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         const barWidth = this.canvas.width / this.array.length;
-        const maxHeight = this.canvas.height - 60; // Extra space for pointer labels
+        const maxHeight = this.canvas.height - this.POINTER_SPACE;
         const maxValue = Math.max(...this.array);
         
         for (let i = 0; i < this.array.length; i++) {
@@ -41,7 +43,7 @@ class Visualizer {
             const barHeight = (this.array[i] / maxValue) * maxHeight;
             this.ctx.fillRect(
                 i * barWidth,
-                this.canvas.height - barHeight - 40,
+                this.canvas.height - barHeight - this.POINTER_OFFSET,
                 barWidth - 1,
                 barHeight
             );

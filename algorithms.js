@@ -230,7 +230,8 @@ class SortingAlgorithms {
                     { index: high, label: 'high/pivot', color: '#ef4444' },
                     { index: j, label: 'j', color: '#f59e0b' }
                 ];
-                // i starts at -1 and tracks the boundary of elements less than pivot
+                // i starts at -1 and tracks the boundary of elements less than pivot.
+                // Only show pointer when i >= 0 since -1 is not a valid array position.
                 if (i >= 0) {
                     pointers.push({ index: i, label: 'i', color: '#8b5cf6' });
                 }
