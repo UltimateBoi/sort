@@ -70,7 +70,7 @@ class SortingAlgorithms {
                         indices: [j, j + 1],
                         arrayState: [...arr],
                         pointers: [
-                            { index: i, label: 'key', color: '#10b981' },
+                            { index: j + 1, label: 'key', color: '#10b981' },
                             { index: j, label: 'j', color: '#f59e0b' }
                         ]
                     });
@@ -85,7 +85,7 @@ class SortingAlgorithms {
                             indices: [j, j + 1],
                             arrayState: [...arr],
                             pointers: [
-                                { index: i, label: 'key', color: '#10b981' },
+                                { index: j + 1, label: 'key', color: '#10b981' },
                                 { index: j, label: 'j', color: '#f59e0b' }
                             ]
                         });
@@ -228,6 +228,7 @@ class SortingAlgorithms {
                     { index: high, label: 'high/pivot', color: '#ef4444' },
                     { index: j, label: 'j', color: '#f59e0b' }
                 ];
+                // i starts at -1 and tracks the boundary of elements less than pivot
                 if (i >= 0) {
                     pointers.push({ index: i, label: 'i', color: '#8b5cf6' });
                 }

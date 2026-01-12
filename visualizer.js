@@ -52,6 +52,11 @@ class Visualizer {
         this.ctx.textAlign = 'center';
         
         for (let pointer of pointers) {
+            // Skip pointers that are out of bounds
+            if (pointer.index < 0 || pointer.index >= this.array.length) {
+                continue;
+            }
+            
             const x = pointer.index * barWidth + barWidth / 2;
             const y = this.canvas.height - 5;
             
