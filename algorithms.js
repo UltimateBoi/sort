@@ -175,7 +175,8 @@ class SortingAlgorithms {
                     pointers: [
                         { index: start, label: 'start', color: '#3b82f6' },
                         { index: mid, label: 'mid', color: '#f59e0b' },
-                        { index: end, label: 'end', color: '#ef4444' }
+                        { index: end, label: 'end', color: '#ef4444' },
+                        { index: k - 1, label: 'k', color: '#10b981' }
                     ]
                 });
             }
@@ -194,7 +195,8 @@ class SortingAlgorithms {
                     pointers: [
                         { index: start, label: 'start', color: '#3b82f6' },
                         { index: mid, label: 'mid', color: '#f59e0b' },
-                        { index: end, label: 'end', color: '#ef4444' }
+                        { index: end, label: 'end', color: '#ef4444' },
+                        { index: k - 1, label: 'k', color: '#10b981' }
                     ]
                 });
             }
