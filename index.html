@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sorting Algorithms Visualizer</h1>
+        <p>Interactive visualizations and benchmarks for common sorting algorithms</p>
+    </header>
+
+    <main>
+        <section class="controls">
+            <div class="control-group">
+                <label for="algorithm-select">Algorithm:</label>
+                <select id="algorithm-select">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="array-size">Array Size: <span id="size-value">50</span></label>
+                <input type="range" id="array-size" min="10" max="100" value="50">
+            </div>
+
+            <div class="control-group">
+                <label for="speed">Speed: <span id="speed-value">50</span>ms</label>
+                <input type="range" id="speed" min="1" max="200" value="50">
+            </div>
+
+            <div class="control-buttons">
+                <button id="generate-btn" class="btn btn-primary">Generate New Array</button>
+                <button id="sort-btn" class="btn btn-success">Start Sort</button>
+                <button id="stop-btn" class="btn btn-danger">Stop</button>
+            </div>
+        </section>
+
+        <section class="visualization">
+            <h2 id="algorithm-title">Bubble Sort</h2>
+            <div class="stats">
+                <span>Comparisons: <strong id="comparisons">0</strong></span>
+                <span>Swaps: <strong id="swaps">0</strong></span>
+                <span>Time: <strong id="time">0</strong>ms</span>
+            </div>
+            <canvas id="canvas"></canvas>
+        </section>
+
+        <section class="algorithm-info">
+            <h2>Algorithm Information</h2>
+            <div id="info-content">
+                <h3>Bubble Sort</h3>
+                <p><strong>Time Complexity:</strong> O(n²) average and worst case, O(n) best case</p>
+                <p><strong>Space Complexity:</strong> O(1)</p>
+                <p><strong>Description:</strong> Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.</p>
+                <p><strong>Example:</strong> [5, 2, 8, 1, 9] → [2, 5, 1, 8, 9] → [2, 1, 5, 8, 9] → [1, 2, 5, 8, 9]</p>
+            </div>
+        </section>
+
+        <section class="benchmark">
+            <h2>Benchmarking</h2>
+            <div class="benchmark-controls">
+                <label for="benchmark-size">Test Size:</label>
+                <select id="benchmark-size">
+                    <option value="100">100 elements</option>
+                    <option value="1000">1,000 elements</option>
+                    <option value="5000">5,000 elements</option>
+                    <option value="10000" selected>10,000 elements</option>
+                </select>
+                <button id="run-benchmark-btn" class="btn btn-primary">Run Benchmark</button>
+            </div>
+            <div id="benchmark-results" class="benchmark-results"></div>
+        </section>
+
+        <section class="examples">
+            <h2>Code Examples</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="bubble">Bubble Sort</button>
+                <button class="tab-btn" data-tab="insertion">Insertion Sort</button>
+                <button class="tab-btn" data-tab="merge">Merge Sort</button>
+                <button class="tab-btn" data-tab="quick">Quick Sort</button>
+            </div>
+            <div class="tab-content">
+                <pre id="code-example"><code>function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap elements
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    return arr;
+}</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created for learning and visualization purposes | <a href="https://github.com/UltimateBoi/sort" target="_blank">GitHub Repository</a></p>
+    </footer>
+
+    <script src="algorithms.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="benchmark.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
