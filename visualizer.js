@@ -34,10 +34,11 @@ class Visualizer {
         
         const barWidth = this.canvas.width / this.array.length;
         const maxHeight = this.canvas.height - 20;
+        const maxValue = Math.max(...this.array);
         
         for (let i = 0; i < this.array.length; i++) {
             this.ctx.fillStyle = this.colors[i];
-            const barHeight = (this.array[i] / Math.max(...this.array)) * maxHeight;
+            const barHeight = (this.array[i] / maxValue) * maxHeight;
             this.ctx.fillRect(
                 i * barWidth,
                 this.canvas.height - barHeight,
